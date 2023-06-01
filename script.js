@@ -1,5 +1,26 @@
 "use strict";
 
+let cardData = [
+  { title: "Title 1", header: "crimson", description: "Text text text" },
+  { title: "Title 2", header: "darkolivegreen", description: "Text text text" },
+  { title: "Title 3", header: "aquamarine", description: "Text text text" },
+  { title: "Title 4", header: "coral", description: "Text text text" },
+  { title: "Title 5", header: "coral", description: "Text text text" },
+  { title: "Title 6", header: "coral", description: "Text text text" },
+  { title: "Title 7", header: "coral", description: "Text text text" },
+  { title: "Title 8", header: "coral", description: "Text text text" },
+  { title: "Title 9", header: "coral", description: "Text text text" },
+];
+
+/*
+HOOK UP TO MONGODB ATLAS
+1: login
+2: grab all data in a specific collection 
+*/
+
+
+
+let cardCounter = 0;
 // Add in a function that creates
 // cards when the page loads.
 
@@ -26,6 +47,7 @@ initCards();
 
 //wrap this up in a function and call it on page load and
 // when swipe or button press?
+
 allCards.forEach(function (el) {
   var hammertime = new Hammer(el);
 
@@ -131,10 +153,11 @@ function newCardCreator() {
   const node = document.createElement("div");
   node.classList.add("tinder--card");
   //make this give it a random background
-  node.innerHTML = `<img src="https://placehold.co/600x300/darkviolet/FFFFFF.png" />
-<h3>Demo card X</h3>
-<p>This is a demo for Tinder like swipe cards</p>`;
+  node.innerHTML = `<img src="https://placehold.co/600x300/${cardData[cardCounter].header}/FFFFFF.png" />
+<h3>${cardData[cardCounter].title}</h3>
+<p>${cardData[cardCounter].description}</p>`;
   document.getElementById("cards-block").appendChild(node);
   allCards = document.querySelectorAll(".tinder--card");
+  cardCounter++;
   return allCards;
 }
